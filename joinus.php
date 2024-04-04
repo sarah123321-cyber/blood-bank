@@ -29,6 +29,42 @@ if(isset($_SESSION['login'])){
     <script type="text/javascript">
         $(document).ready(function(){
             $("#join").click(function(){
+                
+                if($("#donor_name").val() == ""){
+                $("#add_err2").html('<div class="alert alert-danger"> <strong>Name</strong> is required. </div>');
+                return false;
+                }
+
+                if($("#mobile_no").val().length != 10){
+                $("#add_err2").html('<div class="alert alert-danger"> <strong>Mobile Number</strong> must be 10 digits. </div>');
+                return false;
+                }
+
+                if($("#bloodgroup").val() == ""){
+                $("#add_err2").html('<div class="alert alert-danger"> <strong>BloodGroup</strong> is required. </div>');
+                return false;
+                }
+
+                if($("#age").val() == ""){
+                $("#add_err2").html('<div class="alert alert-danger"> <strong>Age</strong> is required. </div>');
+                return false;
+                }
+
+                if($("#gender").val() == ""){
+                $("#add_err2").html('<div class="alert alert-danger"> <strong>Gender</strong> is required. </div>');
+                return false;
+                }
+
+                if($("#address").val() == ""){
+                $("#add_err2").html('<div class="alert alert-danger"> <strong>Address</strong> is required. </div>');
+                return false;
+                }
+
+                if($("#city").val() == ""){
+                $("#add_err2").html('<div class="alert alert-danger"> <strong>City</strong> is required. </div>');
+                return false;
+                }
+               
                 donor_name = $("#donor_name").val();
                 mobile_no = $("#mobile_no").val();
                 bloodgroup = $("#bloodgroup").val();
@@ -40,28 +76,19 @@ if(isset($_SESSION['login'])){
                 $.ajax({
                     type: "POST",
                     url:"adddonor.php",
-                    data: "donor_name="+ donor_name + "&mobile_no="+ mobile_no + "&bloodgroup=" + bloodgroup +"&age=" + age + "&gender=" + gender + "&address="+address +"&city="+ city,
+                    data: {
+                        donor_name: donor_name,
+                        mobile_no: mobile_no,
+                        bloodgroup: bloodgroup,
+                        age: age,
+                        gender: gender,
+                        address: address,
+                        city: city
+                    },
                     success: function(html){
                         if(html == 'true'){
                             $("#add_err2").html('<div class="alert alert-success"> <strong>Account</strong> processed. </div>');
-
                             window.location.href = "userdashboard.php";
-                        } else if (html == 'false') {
-                            $("#add_err2").html('<div class="alert alert-danger"><strong>Donor</strong> already in system. </div>');
-                        } else if (html == 'donor') {
-                            $("#add_err2").html('<div class="alert alert-danger">  <strong>Donor\'s Name</strong> is required.  </div>');
-                        } else if (html == "mob"){
-                            $("#add_err2").html('<div class="alert alert-danger">  <strong>Mobile Number</strong> is required.  </div>');
-                        } else if(html == "bg"){
-                            $("#add_err2").html('<div class="alert alert-danger">  <strong>Blood Group</strong> is not Selected.</div>');
-                        } else if(html == "age"){
-                            $("#add_err2").html('<div class="alert alert-danger">  <strong>Age</strong> is required.  </div>');
-                        } else if(html == "gender"){
-                            $("#add_err2").html('<div class="alert alert-danger">  <strong>Gender</strong> is not Selected.  </div>');
-                        } else if(html == "address"){
-                            $("#add_err2").html('<div class="alert alert-danger">  <strong>Donor\'s address</strong> is required.  </div>');
-                        } else if (html == "city"){
-                            $("#add_err2").html('<div class="alert alert-danger">  <strong>City\'s Name</strong> is required.  </div>');
                         }
 
                     },
@@ -78,38 +105,7 @@ if(isset($_SESSION['login'])){
 <body>
 
 
-    <nav class="navbar mynavbar navbar-expand-lg navbar-dark bg-primary">
-        <a class="navbar-brand" href="#">BloodBank Management System</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mynavbar" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="mynavbar">
-            <ul class="navbar-nav mr-auto"  >
-        </ul>
-            <form class="form-inline my-2 my-lg-0"><ul class="navbar-nav mr-auto"  >
-                <li class="nav-item ">
-                <a class="nav-link" href="userdashboard.php">Home</a>
-                </li>
-                <li class="nav-item">
-                <a class="nav-link" href="aboutus.php">About us</a>
-                </li>
-                <li class="nav-item">
-                <a class="nav-link" href="ourmembers.php">Our Members</a>
-                </li>
-                <li class="nav-item active">
-                <a class="nav-link" href="joinus.php">Join Us</a>
-                </li>
-                <li class="nav-item">
-                <a class="nav-link" href="userstock.php">Make Request</a>
-                </li>
-                <li class="nav-item">
-                <a class="nav-link" href="logout.php">Logout</a>
-                </li>
-            </ul>
-            </form>
-        </div>
-    </nav>
+    <?php include 'UserNavbar.php' ?>
 
     <div class="container-fluid" style="padding-top: 80px;">
         <div class="row justify-content-center">

@@ -11,7 +11,7 @@ if(isset($_SESSION['login'])){
 $servername = "localhost";
 $username = "root";
 $password = "";
-$db = "bloodbankk";
+$db = "blood-bank";
 
 $mysqli = new mysqli($servername,$username,$password,$db);
 
@@ -38,83 +38,53 @@ if($mysqli->connect_error){
     <!--Script-->
     <script type="text/javascript">
         $(document).ready(function () {
-
-            $("#request").click(function () {
-                
-                name = $("#name").val();
-                bloodgroup = $("#bloodgroup").val();
-                mobile_no = $("#mobile_no").val();
-                
-                $.ajax({
-                    type: "POST",
-                    url: "makereq.php",
-                    data: "name=" + name + "&bloodgroup=" + bloodgroup + "&mobile_no=" + mobile_no,
-                    success: function (html) {
-                        if (html == 'true') {
-
-                            $("#add_err2").html('<div class="alert alert-success"> <strong>Request</strong> Sent. </div>');
-
-                            window.location.href = "userdashboard.php";
-
-                        } else if (html == 'false') {
-                            $("#add_err2").html('<div class="alert alert-danger"><strong>Request</strong> Not Sent </div>');                    
-
-                        } else if (html == 'name') {
-                            $("#add_err2").html('<div class="alert alert-danger">  <strong> Name</strong> is required.  </div>');
-                                                
-                        } else if (html == 'bg') {
-                            $("#add_err2").html('<div class="alert alert-danger"> <strong>Blood Group </strong> is required. </div>');
-
-                        } else if (html == 'mob') {
-                            $("#add_err2").html('<div class="alert alert-danger"><strong>Mobile Number </strong> is required.  </div>');
-
-                        } else {
-                            $("#add_err2").html('<div class="alert alert-danger"> <strong>Error</strong> processing request. Please try again.  </div>');
-                        }
-                    },
-                    beforeSend: function () {
-                        $("#add_err2").html("loading...");
-                    }
-                });
-                return false;
-            });
+    $("#request").click(function (e) {
+        e.preventDefault(); // Prevent default form submission
+        if($("#mobile_no").val().length != 10){
+            $("#add_err2").html('<div class="alert alert-danger"> <strong>Mobile Number</strong> must be 10 digits. </div>');
+            return false;
+        }
+        $.ajax({
+            type: "POST",
+            url: "makereq.php",
+            data: {
+                name: $("#name").val(),
+                bloodgroup: $("#bloodgroup").val(),
+                mobile_no: $("#mobile_no").val()
+            },
+            success: function (response) {
+                if (response === 'true') {
+                    $("#add_err2").html('<div class="alert alert-success"> <strong>Request</strong> Sent. </div>');
+                    setTimeout(function () {
+                        window.location.href = "userdashboard.php"; // Redirect after success
+                    }, 1000); // Delay for 1 second
+                } else if (response === 'false') {
+                    $("#add_err2").html('<div class="alert alert-danger"><strong>Request</strong> Not Sent </div>');
+                } else if (response === 'name') {
+                    $("#add_err2").html('<div class="alert alert-danger">  <strong>Name</strong> is required.  </div>');
+                } else if (response === 'bg') {
+                    $("#add_err2").html('<div class="alert alert-danger"> <strong>Blood Group </strong> is required. </div>');
+                } else if (response === 'mob') {
+                    $("#add_err2").html('<div class="alert alert-danger"><strong>Mobile Number </strong> is required.  </div>');
+                } else {
+                    $("#add_err2").html('<div class="alert alert-danger"> <strong>Error</strong> processing request. Please try again.  </div>');
+                }
+            },
+            error: function(xhr, status, error){
+                console.log(xhr.responseText); // Log any error messages to console
+                $("#add_err2").html('<div class="alert alert-danger">An error occurred while processing your request. Please try again.</div>');
+            },
+            beforeSend: function () {
+                $("#add_err2").html("loading...");
+            }
         });
+    });
+});
     </script>
 
 </head>
 <body>
-<nav class="navbar mynavbar navbar-expand-lg navbar-dark bg-primary">
-    <a class="navbar-brand" href="#">BloodBank Management System</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mynavbar" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="mynavbar">
-        <ul class="navbar-nav mr-auto"  >
-    </ul>
-        <form class="form-inline my-2 my-lg-0"><ul class="navbar-nav mr-auto"  >
-            <li class="nav-item ">
-            <a class="nav-link" href="userdashboard.php">Home</a>
-            </li>
-            <li class="nav-item">
-            <a class="nav-link" href="aboutus.php">About us</a>
-            </li>
-            <li class="nav-item">
-            <a class="nav-link" href="ourmembers.php">Our Members</a>
-            </li>
-            <li class="nav-item">
-            <a class="nav-link" href="joinus.php">Join Us</a>
-            </li>
-            <li class="nav-item active">
-                <a class="nav-link" href="userstock.php">Make Request</a>
-            </li>
-            <li class="nav-item">
-            <a class="nav-link" href="logout.php">Logout</a>
-            </li>
-        </ul>
-        </form>
-    </div>
-</nav>
+<?php include "UserNavbar.php"?>
 <div class="container">
     <div class="row">
         <div class="col-lg-12 order-sm-2">

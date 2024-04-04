@@ -20,37 +20,7 @@ if(isset($_SESSION['login'])){
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
-<nav class="navbar mynavbar navbar-expand-lg navbar-dark bg-primary">
-    <a class="navbar-brand" href="#">BloodBank Management System</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mynavbar" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="mynavbar">
-        <ul class="navbar-nav mr-auto"  >
-    </ul>
-        <form class="form-inline my-2 my-lg-0"><ul class="navbar-nav mr-auto"  >
-        <li class="nav-item active">
-            <a class="nav-link" href="adminhome.php">Home</a>
-            </li>
-            <li class="nav-item">
-            <a class="nav-link" href="deletea.php">Delete Records</a>
-            </li>
-            <li class="nav-item">
-            <a class="nav-link" href="updatea.php">Update Information</a>
-            </li>
-            <a class="nav-link" href="adminstock.php">Review Stocks</a>
-            </li>
-            <li class="nav-item">
-            <a class="nav-link" href="requests.php">Requests</a>
-            </li>
-            <li class="nav-item">
-            <a class="nav-link" href="adminlogout.php">Logout</a>
-            </li>
-        </ul>
-        </form>
-    </div>
-</nav>
+    <?php include 'Navbar.php' ?>
 
 
 <div class="container-fluid" >
@@ -65,20 +35,15 @@ if(isset($_SESSION['login'])){
                 <a href="deletea.php" class="btn btn-danger">Delete</a>
             </div>
         </div>
-
-        <div class="card mycards col-md-3 text-dark bg-light mb-3" style="max-width: 18rem; margin:10px">
-            <div class="card-header">Update Records</div>
-            <div class="card-body">
-                <p class="card-text">Review and Update Specific Donor's Data</p>
-                <a href="updatea.php" class="btn btn-primary">Update</a>
-            </div>
-        </div>
-
+        
         <div class="card mycards col-md-3 text-dark bg-light mb-3" style="max-width: 18rem;margin:10px">
-            <div class="card-header">Review Stocks</div>
+            <div class="card-header">Review and update Stocks</div>
             <div class="card-body">
                 <p class="card-text">Review and Update BloodBank's Stock </p>
-                <a href="adminstock.php" class="btn btn-primary">Review</a>
+                <div class="d-flex align-items-center justify-content-between gap-2">
+                    <a href="updatea.php" class="btn btn-primary w-100">Update</a>
+                    <a href="adminstock.php" class="btn btn-primary w-100 ml-2">Review</a>
+                </div>
             </div>
         </div>
 
@@ -93,8 +58,6 @@ if(isset($_SESSION['login'])){
 </div>
 
 <?php require_once "footer.php"?>
-
-
 </body>
 </html>
 <?php

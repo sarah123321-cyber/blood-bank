@@ -16,7 +16,7 @@ else{
 $servername = "localhost";
 $username = "root";
 $password = "";
-$db = "bloodbankk";
+$db = "blood-bank";
 
 $mysqli = new mysqli($servername,$username,$password,$db);
 
@@ -38,37 +38,7 @@ $result = $mysqli->query($sql);
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 
-<nav class="navbar mynavbar navbar-expand-lg navbar-dark bg-primary">
-    <a class="navbar-brand" href="#">BloodBank Management System</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mynavbar" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="mynavbar">
-        <ul class="navbar-nav mr-auto"  >
-    </ul>
-        <form class="form-inline my-2 my-lg-0"><ul class="navbar-nav mr-auto"  >
-        <li class="nav-item">
-            <a class="nav-link" href="adminhome.php">Home</a>
-            </li>
-            <li class="nav-item activate">
-            <a class="nav-link active" href="deletea.php">Delete Records</a>
-            </li>
-            <li class="nav-item">
-            <a class="nav-link" href="updatea.php">Update Information</a>
-            </li>
-            <a class="nav-link" href="adminstock.php">Review Stocks</a>
-            </li>
-            <li class="nav-item">
-            <a class="nav-link" href="requests.php">Requests</a>
-            </li>
-            <li class="nav-item">
-            <a class="nav-link" href="adminlogout.php">Logout</a>
-            </li>
-        </ul>
-        </form>
-    </div>
-</nav>
+<?php include 'Navbar.php' ?>
 
 <div class="container">
     <div class="row justify-content-center">

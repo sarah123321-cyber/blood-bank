@@ -22,7 +22,7 @@ hr {
 }
 
 
-.back-image{
+.back-image{ 
     background-image: url('img/background1.jpeg');
     background-size: cover;
 }

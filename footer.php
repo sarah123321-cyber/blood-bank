@@ -9,7 +9,6 @@
 
 </head>
 
-
 <!-- Footer -->
 <footer class="page-footer myfooter fixed-bottom  font-small blue">
 

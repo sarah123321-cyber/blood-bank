@@ -2,7 +2,7 @@
 $servername = "localhost";
 $username = "root";
 $password = "";
-$db = "bloodbankk";
+$db = "blood-bank";
 
 $mysqli = new mysqli($servername,$username,$password,$db);
 
@@ -28,7 +28,12 @@ function val($data){
 
 
 // Update Users table with new Values
-$sql = "UPDATE stock SET bloodgroup='$bloodgroup', stock='$stock' WHERE stock_id='$stock_id'";
+if ($stock >= 0) {
+    $sql = "UPDATE stock SET bloodgroup='$bloodgroup', stock='$stock' WHERE stock_id='$stock_id'";
+} else {
+    echo "Stock value cannot be less than zero.";
+}
+
 
 // Readirect to main page
 if($mysqli->query($sql) === TRUE){
