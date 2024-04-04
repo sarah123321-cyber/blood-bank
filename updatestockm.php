@@ -2,46 +2,47 @@
 $servername = "localhost";
 $username = "root";
 $password = "";
-$db = "blood-bank";
+$db = "bloodbankk";
 
-$mysqli = new mysqli($servername,$username,$password,$db);
+$mysqli = new mysqli($servername, $username, $password, $db);
 
-if($mysqli->connect_error){
+if ($mysqli->connect_error) {
     die("Connection Failed " . $mysqli->connect_error);
 }
 
-// Form Variables
-$bloodgroup = val($_POST["bloodgroup"]);
-$stock = val($_POST["stock"]);
-$stock_id = val($_POST["stock_id"]);
+// Check if the required POST variables are set
+if (isset($_POST["bloodgroup"]) && isset($_POST["stock"]) && isset($_POST["stock_id"])) {
+    // Form Variables
+    $bloodgroup = $_POST["bloodgroup"];
+    $stock = $_POST["stock"];
+    $stock_id = $_POST["stock_id"];
 
-// validation
+    // validation
+    function val($data)
+    {
+        $data = trim($data);
+        $data = stripslashes($data);
+        $data = htmlspecialchars($data);
+        return $data;
+    }
 
-function val($data){
-    $data = trim($data);
-    $data = stripslashes($data);
-    $data = htmlspecialchars($data);
-    return $data;
-}
+    // Update Users table with new Values
+    if ($stock >= 0) {
+        $sql = "UPDATE stock SET bloodgroup='$bloodgroup', stock='$stock' WHERE stock_id='$stock_id'";
+        
+        // Readirect to main page
+        if ($mysqli->query($sql) === TRUE) {
+            header("location:adminstock.php?message=success&stock_id=".$stock_id);
+        } else {
+            echo "Error updating record " . $mysqli->error;
+        }
+    } else {
 
-
-
-
-// Update Users table with new Values
-if ($stock >= 0) {
-    $sql = "UPDATE stock SET bloodgroup='$bloodgroup', stock='$stock' WHERE stock_id='$stock_id'";
+        echo "Stock value cannot be less than zero.";
+    }
 } else {
-    echo "Stock value cannot be less than zero.";
+    echo "Required POST variables are not set.";
 }
-
-
-// Readirect to main page
-if($mysqli->query($sql) === TRUE){
-    header("location:adminstock.php?message=success&stock_id=".$stock_id);
-}else {
-    echo "Error updating record " . $mysqli->error;
-}
-
 
 $mysqli->close();
 ?>
