@@ -4,7 +4,7 @@ session_start();
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "blood-bank";
+$dbname = "bloodbankk";
 
 // create connection
 $mysqli = new mysqli($servername, $username, $password,$dbname);

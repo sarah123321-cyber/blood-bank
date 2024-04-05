@@ -11,7 +11,7 @@ if(isset($_SESSION['login'])){
     $servername = "localhost";
     $username = "root";
     $password = "";
-    $dbname = "blood-bank";
+    $dbname = "bloodbankk";
 
     // Create connection
     $conn = new mysqli($servername, $username, $password, $dbname);
