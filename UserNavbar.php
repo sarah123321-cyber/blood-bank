@@ -17,7 +17,7 @@
                             <li class="nav-item <?php echo basename($_SERVER['PHP_SELF']) == 'joinus.php' ? 'active' : ''; ?>">
                             <a class="nav-link" href="joinus.php">Join Us</a>
                             </li>
-                            
+                    
                             <li class="nav-item <?php echo basename($_SERVER['PHP_SELF']) == 'userstock.php' ? 'active' : ''; ?>">
                                 <a class="nav-link" href="userstock.php">Make Request</a>
                             </li>

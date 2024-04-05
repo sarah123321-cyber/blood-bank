@@ -45,8 +45,8 @@ if(isset($_SESSION['login'])){
                 return false;
                 }
 
-                if($("#age").val() == ""){
-                $("#add_err2").html('<div class="alert alert-danger"> <strong>Age</strong> is required. </div>');
+                if($("#age").val() < 18  ){
+                $("#add_err2").html('<div class="alert alert-danger"> <strong>Age</strong> is required. Cannot be negative or below 18 </div>');
                 return false;
                 }
 
@@ -130,7 +130,7 @@ if(isset($_SESSION['login'])){
                             <label for="mobile_no">Mobile Number</label>
                             </div>
                             <div class="form-group col-md-6 ">
-                            <input type="text" class="form-control" id="mobile_no" name="mobile_no">
+                            <input type="number" class="form-control" id="mobile_no" name="mobile_no">
                             </div>
                         </div>
                         <div class="form-row">
@@ -157,7 +157,7 @@ if(isset($_SESSION['login'])){
                                 <label for="age">Age</label>
                             </div>
                             <div class="form-group col-md-6">
-                                <input type="text" class="form-control" id="age" name="age">
+                            <input type="number" class="form-control" id="age" name="age" min="0">
                             </div>
                         </div>
                         <div class="form-row">
