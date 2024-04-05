@@ -2,7 +2,7 @@
 $servername = "localhost";
 $username = "root";
 $password = "";
-$db = "bloodbankk";
+$db = "blood-bank";
 
 $mysqli = new mysqli($servername,$username,$password,$db);
 
@@ -55,6 +55,7 @@ $result = $mysqli->query($sql);
                         <th>Requester's Name</th>
                         <th>Mobile Number</th>
                         <th>Blood Group </th>
+                        <th>Action </th>
                         </tr>
                         </thead>";
                         while($row = $result->fetch_assoc()){
@@ -64,7 +65,7 @@ $result = $mysqli->query($sql);
                     <td><?php echo $row["name"]; ?></td>
                     <td><?php echo $row["mobile_no"]; ?></td>
                     <td><?php echo $row["bloodgroup"]; ?></td>
-                    <td><a class="btn btn-danger rounded-pill" href="deletereq.php?req_id=<?php echo $row["req_id"] ?>">Delete</a></td>
+                    <td><a class="btn btn-success rounded-pill" href="updaterequest.php?req_id=<?php echo $row["req_id"] ?>&bloodgroup=<?php echo $row["bloodgroup"] ?>">Accept</a></td>
                 </tr>
                 
                 <?php	

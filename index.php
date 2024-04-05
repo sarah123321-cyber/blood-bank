@@ -107,7 +107,7 @@
                         <button type="submit" class="btn btn-primary" id="login">login</button>
                     </form>
                     <div class="form-group col-lg-12">
-                        <a href="register.php"><button type="submit" class="btn btn-default">Not a Member? Register here</button></a>
+                        <a href="register.php"><button type="submit" class="btn btn-default">Not a User? Register here</button></a>
                     </div>
                 </div>
                 <div class="col-lg-6"  style="align-items: center;">

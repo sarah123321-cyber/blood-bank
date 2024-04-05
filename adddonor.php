@@ -3,40 +3,51 @@ session_start();
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "bloodbankk";
+$dbname = "blood-bank";
 
-// create connection
-$mysqli = new mysqli($servername, $username, $password,$dbname);
+// Create connection
+$mysqli = new mysqli($servername, $username, $password, $dbname);
 
-if(!$mysqli){
-    die("Connection failed: " . mysqli_connect_error());
+// Check connection
+if ($mysqli->connect_error) {
+    die("Connection failed: " . $mysqli->connect_error);
 }
 
-$donor_name = mysqli_real_escape_string($mysqli, $_POST['donor_name']);
-$bloodgroup = mysqli_real_escape_string($mysqli, $_POST['bloodgroup']);
-$mobile_no = mysqli_real_escape_string($mysqli, $_POST['mobile_no']);
-$age = mysqli_real_escape_string($mysqli, $_POST['age']);
-$gender = mysqli_real_escape_string($mysqli, $_POST['gender']);
-$city = mysqli_real_escape_string($mysqli, $_POST['city']);
-$address = mysqli_real_escape_string($mysqli, $_POST['address']);
+// Escape user inputs for security
+$donor_name = $mysqli->real_escape_string($_POST['donor_name']);
+$bloodgroup = $mysqli->real_escape_string($_POST['bloodgroup']);
+$mobile_no = $mysqli->real_escape_string($_POST['mobile_no']);
+$age = $mysqli->real_escape_string($_POST['age']);
+$gender = $mysqli->real_escape_string($_POST['gender']);
+$city = $mysqli->real_escape_string($_POST['city']);
+$address = $mysqli->real_escape_string($_POST['address']);
 
-
-if(strlen($donor_name) < 2){
+// Validate input
+if (strlen($donor_name) < 2) {
     echo 'name';
-} elseif (strlen($bloodgroup) <= 3){
+} elseif (strlen($bloodgroup) <= 3) {
     echo 'bg';
-} elseif (strlen($mobile_no) < 10){
+} elseif (strlen($mobile_no) < 10) {
     echo 'mob';
 } else {
-    $query = "INSERT INTO donors(donor_name, mobile_no, bloodgroup,age,gender,city,address) VALUES ('$donor_name','$mobile_no','$bloodgroup','$age','$gender','$city','$address')";
+    // SQL to insert values
+    $query = "INSERT INTO donors(donor_name, mobile_no, bloodgroup, age, gender, city, address) 
+              VALUES ('$donor_name','$mobile_no','$bloodgroup','$age','$gender','$city','$address')";
+    
+    // SQL to update stock
+    $sql = "UPDATE stock SET stock = stock + 1 WHERE bloodgroup = '$bloodgroup'";
+
+    // Execute queries
     $insert_row = $mysqli->query($query);
-    if($insert_row){
+    $update_stock = $mysqli->query($sql);
+
+    if ($insert_row && $update_stock) {
         echo "true";
-    } 
-    else{
+    } else {
         echo "false";
     }  
 }
 
+// Close connection
 $mysqli->close();
 ?>

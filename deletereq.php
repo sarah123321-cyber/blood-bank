@@ -2,7 +2,7 @@
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "bloodbankk";
+$dbname = "blood-bank";
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);

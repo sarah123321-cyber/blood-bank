@@ -88,7 +88,7 @@ if(isset($_SESSION['login'])){
                     success: function(html){
                         if(html == 'true'){
                             $("#add_err2").html('<div class="alert alert-success"> <strong>Account</strong> processed. </div>');
-                            window.location.href = "userdashboard.php";
+                            // window.location.href = "userdashboard.php";
                         }
 
                     },
@@ -140,14 +140,14 @@ if(isset($_SESSION['login'])){
                             <div class="form-group col-md-6">
                             <select id="bloodgroup" name="bloodgroup"  class="form-control">
                                 <option selected>Choose...</option>
-                                <option value="A positive">A+</option>
-                                <option value="A negative">A-</option>
-                                <option value="B positive">B+</option>
-                                <option value="B negative">B-</option>
-                                <option value="O positive">O+</option>
-                                <option value="O negative">O-</option>
-                                <option value="AB positive">AB+</option>
-                                <option value="AB negative">AB-</option>
+                                <option value="A ve">A+</option>
+                                <option value="A -ve">A-</option>
+                                <option value="B ve">B+</option>
+                                <option value="B -ve">B-</option>
+                                <option value="AB ve">O+</option>
+                                <option value="AB -ve">O-</option>
+                                <option value="O ve">AB+</option>
+                                <option value="O -ve">AB-</option>
                             </select>
                             </div>
                             

@@ -11,7 +11,7 @@ if(isset($_SESSION['login'])){
 $servername = "localhost";
 $username = "root";
 $password = "";
-$db = "bloodbankk";
+$db = "blood-bank";
 
 $mysqli = new mysqli($servername,$username,$password,$db);
 
@@ -128,15 +128,15 @@ if($mysqli->connect_error){
                     <div class="form-group col-lg-12">
                         <label class="lb">Blood Group</label>
                         <select id="bloodgroup" name="bloodgroup"  class="form-control">
-                            <option selected>Choose...</option>
-                            <option value="A positive">A+</option>
-                            <option value="A negative">A-</option>
-                            <option value="B positive">B+</option>
-                            <option value="B negative">B-</option>
-                            <option value="O positive">O+</option>
-                            <option value="O negative">O-</option>
-                            <option value="AB positive">AB+</option>
-                            <option value="AB negative">AB-</option>
+                                <option selected>Choose...</option>
+                                <option value="A ve">A+</option>
+                                <option value="A -ve">A-</option>
+                                <option value="B ve">B+</option>
+                                <option value="B -ve">B-</option>
+                                <option value="AB ve">O+</option>
+                                <option value="AB -ve">O-</option>
+                                <option value="O ve">AB+</option>
+                                <option value="O -ve">AB-</option>
                         </select>
                     </div>
                     <div class="form-group col-lg-12">

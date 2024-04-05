@@ -31,7 +31,7 @@ if(isset($_SESSION['login'])){
 <body>
     <div class="header">
         <div class="menu-bar">
-           <?php "UserNavbar.php"?>
+           <?php include "UserNavbar.php"?>
         </div>
     </div>
 
