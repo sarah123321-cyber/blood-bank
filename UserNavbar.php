@@ -9,20 +9,20 @@
                     <form class="form-inline my-2 my-lg-0">
                         <ul class="navbar-nav mr-auto"  >
                             
-                            <li class="nav-item <?php echo basename($_SERVER['PHP_SELF']) == 'userdashboard.php' ? 'active' : ''; ?>">
+                            <li class="nav-item">
                             <a class="nav-link" href="userdashboard.php">Home</a>
                             </li>
                             
                             
-                            <li class="nav-item <?php echo basename($_SERVER['PHP_SELF']) == 'joinus.php' ? 'active' : ''; ?>">
+                            <li class="nav-item">
                             <a class="nav-link" href="joinus.php">Join Us</a>
                             </li>
                     
-                            <li class="nav-item <?php echo basename($_SERVER['PHP_SELF']) == 'userstock.php' ? 'active' : ''; ?>">
+                            <li class="nav-item">
                                 <a class="nav-link" href="userstock.php">Make Request</a>
                             </li>
                             
-                            <li class="nav-item <?php echo basename($_SERVER['PHP_SELF']) == 'logout.php' ? 'active' : ''; ?>">
+                            <li class="nav-item">
                             <a class="nav-link" href="logout.php">Logout</a>
                             </li>
                         
