@@ -6,22 +6,22 @@
 
     <div class="collapse navbar-collapse justify-content-end" id="mynavbar">
         <ul class="navbar-nav me-auto">
-            <li class="nav-item <?php echo basename($_SERVER['PHP_SELF']) == 'adminhome.php' ? 'active' : ''; ?>">
+            <li class="nav-item">
                 <a class="nav-link" href="adminhome.php">Home</a>
             </li>
-            <li class="nav-item <?php echo basename($_SERVER['PHP_SELF']) == 'deletea.php' ? 'active' : ''; ?>">
+            <li class="nav-item ">
                 <a class="nav-link" href="deletea.php">Delete Records</a>
             </li>
-            <li class="nav-item <?php echo basename($_SERVER['PHP_SELF']) == 'updatea.php' ? 'active' : ''; ?>">
+            <li class="nav-item">
                 <a class="nav-link" href="updatea.php">Update Information</a>
             </li>
-            <li class="nav-item <?php echo basename($_SERVER['PHP_SELF']) == 'adminstock.php' ? 'active' : ''; ?>">
+            <li class="nav-item ">
                 <a class="nav-link" href="adminstock.php">Review Stocks</a>
             </li>
-            <li class="nav-item <?php echo basename($_SERVER['PHP_SELF']) == 'requests.php' ? 'active' : ''; ?>">
+            <li class="nav-item">
                 <a class="nav-link" href="requests.php">Requests</a>
             </li>
-            <li class="nav-item <?php echo basename($_SERVER['PHP_SELF']) == 'adminlogout.php' ? 'active' : ''; ?>">
+            <li class="nav-item">
                 <a class="nav-link" href="adminlogout.php">Logout</a>
             </li>
         </ul>
