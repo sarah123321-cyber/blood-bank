@@ -154,20 +154,6 @@
 
     </div>
 
- 
-
-
-<!-- Footer -->
-<footer class="page-footer fixed-bottom  font-small blue">
-
-<!-- Copyright -->
-<div class="footer-copyright text-center py-3">© 2024 Copyright:
-  <a href="#"> bloodbankmanagement.com</a>
-</div>
-<!-- Copyright -->
-
-</footer>
-<!-- Footer -->
 
 </body>
 </html>

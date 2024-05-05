@@ -8,14 +8,3 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 </head>
-
-<!-- Footer -->
-<footer class="page-footer myfooter fixed-bottom  font-small blue">
-
-  <!-- Copyright -->
-  <div class="footer-copyright text-center py-3">© 2024 Copyright
-  </div>
-  <!-- Copyright -->
-
-</footer>
-<!-- Footer -->
