@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,73 +13,84 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
     <style>
-        .back-image{
+        .back-image {
             background-image: url('img/background1.jpeg');
             background-size: cover;
+        }
+
+        .mycontainer {
+            padding-top: 80px;
+            height: 100vh;
+            max-width: 960px;
+            margin-left: auto;
+        }
+
+        .titles {
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .lb {
+            font-weight: bold;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+        input{
+            width: 100%;
+            padding: 10px 15px;
+        }
+        .col-lg-6 {
+            width: 50%;
+            float: right;
         }
     </style>
 
 </head>
+
 <body>
     <!--Navbar-->
-    <nav class="navbar navbar-expand-lg navbar-dark fixed-top p-md-3">
-    <a class="navbar-brand" href="index.php">BloodBank Management System</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mynavbar" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="mynavbar">
-        <ul class="navbar-nav mr-auto"  >
-    </ul>
-        <form class="form-inline my-2 my-lg-0"><ul class="navbar-nav mr-auto"  >
-            <li class="nav-item">
-            <a class="nav-link mnav" href="index.php">User Login</a>
-            </li>
-            <li class="nav-item">
-            <a class="nav-link mnav" href="register.php">User Registration</a>
-            </li>
-            <li class="nav-item active">
-            <a class="nav-link mnav" href="adminlogin.php">Admin Login</a>
-            </li>
-        </ul>
-        </form>
-    </div>
-    </nav>
-
+    <?php include('Navbar_component.php'); ?>
 
     <div class="back-image w-100 vh-100 d-flex justify-content-center">
-        <div class="container-fluid mycontainer" style="padding-top: 80px;height: 100vh;">
+        <div class="container-fluid mycontainer" style="padding-top: 80px; height: 100vh;">
             <div class="row">
-                <div class="col-lg-6 order-sm-12" >
-                <hr>
+                <div class="col-lg-6 order-sm-12">
                     <h1 class="titles" style="text-align:center">Admin Login Form</h1>
-                    <hr>
                     <div id="add_err2"></div>
                     <form action="">
                         <div class="form-group">
-                            <label for="email"  class="lb">Email Address</label>
-                            <input type="email" class="form-control" id="email"> 
+                            <label for="email" class="lb">Email Address</label>
+                            <input type="email" class="form-control" id="email">
                         </div>
                         <div class="form-group">
-                            <label for="password"  class="lb">Password</label>
-                            <input type="password" class="form-control" id="password"> 
+                            <label for="password" class="lb">Password</label>
+                            <input type="password" class="form-control" id="password">
                         </div>
-                        <button type="submit" class="btn btn-primary" id="login">login</button>
-        
+                        <button type="submit" class="btn btn-primary" id="login">Login</button>
                     </form>
                 </div>
-                <div class="col-lg-6 " >
-                   
-                </div>
             </div>
-        </div>   
-    </div> 
+        </div>
+    </div>
 
-<!-- ============ script ================== -->
-<script type="text/javascript" async>
-        $(document).ready(function () {
-            $("#login").click(function () {
-                
+    <!-- ============ script ================== -->
+    <script type="text/javascript" async>
+        $(document).ready(function() {
+            $("#login").click(function() {
+
                 $.ajax({
                     type: "POST",
                     url: "checkadmin.php",
@@ -86,7 +98,7 @@
                         email: $("#email").val(),
                         password: $("#password").val()
                     },
-                    success: function (html) {
+                    success: function(html) {
                         console.log(html)
                         if (html == 'true') {
                             $("#add_err2").html('<div class="alert alert-success"> <strong>Authenticated</strong></div>');
@@ -94,16 +106,16 @@
                             window.location.href = "adminhome.php";
 
                         } else if (html == 'false') {
-                            $("#add_err2").html('<div class="alert alert-danger"><strong>Authentication</strong> failed </div>');                    
+                            $("#add_err2").html('<div class="alert alert-danger"><strong>Authentication</strong> failed </div>');
 
                         } else {
                             $("#add_err2").html('<div class="alert alert-danger"> <strong>Error</strong> processing request. Please try again. </div>');
                         }
                     },
-                    error: function(xhr,status,error){
+                    error: function(xhr, status, error) {
                         console.log(error)
                     },
-                    beforeSend: function () {
+                    beforeSend: function() {
                         $("#add_err2").html("loading...");
                     }
                 });
@@ -112,4 +124,5 @@
         });
     </script>
 </body>
+
 </html>

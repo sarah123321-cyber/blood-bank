@@ -1,8 +1,36 @@
+<style>
+    *{
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+        overflow-x: hidden;
+    }
+    .navbar {
+        background-color:transparent;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px;
+    }
+    .navbar a{
+        color: white;
+        text-decoration: none;
+        font-size: 20px;
+    }
+    .navbar-collapse ul{
+        display: flex;
+        gap: 10px;
+    }
+    .navbar-collapse ul li{
+        list-style: none;
+    }
+    .navbar-collapse ul li a {
+        text-decoration: none;
+        color: white;
+    }
+</style>
 <nav class="navbar mynavbar navbar-expand-lg navbar-dark bg-primary">
     <a class="navbar-brand" href="#">BloodBank Management System</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mynavbar" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
 
     <div class="collapse navbar-collapse justify-content-end" id="mynavbar">
         <ul class="navbar-nav me-auto">

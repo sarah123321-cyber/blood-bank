@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,18 +13,18 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
     <script type="text/javascript">
-        $(document).ready(function () {
+        $(document).ready(function() {
 
-            $("#login").click(function () {
-            
+            $("#login").click(function() {
+
                 $.ajax({
                     type: "POST",
                     url: "checkuser.php",
                     data: {
-                        email:$("#email").val(),
-                        password: $("#password").val() 
+                        email: $("#email").val(),
+                        password: $("#password").val()
                     },
-                    success: function (html) {
+                    success: function(html) {
                         if (html == 'true') {
 
                             $("#add_err2").html('<div class="alert alert-success"> <strong>Authenticated</strong></div>');
@@ -31,16 +32,16 @@
                             window.location.href = "userdashboard.php";
 
                         } else if (html == 'false') {
-                            $("#add_err2").html('<div class="alert alert-danger"><strong>Authentication</strong> failed </div>');                    
+                            $("#add_err2").html('<div class="alert alert-danger"><strong>Authentication</strong> failed </div>');
 
                         } else {
                             $("#add_err2").html('<div class="alert alert-danger"> <strong>Error</strong> processing request. Please try again. </div>');
                         }
                     },
-                    error: function(xhr,status,error){
+                    error: function(xhr, status, error) {
                         console.log(error)
                     },
-                    beforeSend: function () {
+                    beforeSend: function() {
                         $("#add_err2").html("loading...");
                     }
                 });
@@ -49,72 +50,81 @@
         });
     </script>
     <style>
-        .back-image{
+        .back-image {
             background-image: url('img/background1.jpeg');
             background-size: cover;
         }
 
+        .container-fluid {
+            padding-top: 80px;
+            height: 100vh;
+            max-width: 960px;
+            margin-left: auto;
+        }
+
+        .titles {
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-weight: bold;
+        }
+        .col-lg-6 {
+            width: 50%;
+            float: right;
+        }
+
+        button[type="submit"] {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+        input{
+            width: 100%;
+            padding: 10px 15px;
+        }
     </style>
 
 </head>
+
 <body>
     <!--Navbar-->
-    <nav class="navbar navbar-expand-lg navbar-dark fixed-top p-md-3">
-    <a class="navbar-brand" href="index.php">BloodBank Management System</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mynavbar" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="mynavbar">
-        <ul class="navbar-nav mr-auto"  >
-    </ul>
-        <form class="form-inline my-2 my-lg-0"><ul class="navbar-nav mr-auto"  >
-            <li class="nav-item active">
-            <a class="nav-link mnav" href="index.php">User Login</a>
-            </li>
-            <li class="nav-item">
-            <a class="nav-link mnav" href="register.php">User Registration</a>
-            </li>
-            <li class="nav-item">
-            <a class="nav-link mnav" href="adminlogin.php">Admin Login</a>
-            </li>
-        </ul>
-        </form>
-    </div>
-    </nav>
+    <?php include('Navbar_component.php'); ?>
 
     <div class="back-image w-100 vh-100 d-flex justify-content-center">
-
-            <!--Main Body -->
         <div class="container-fluid" style="padding-top: 80px; height: 100vh;">
             <div class="row">
-                <div class="col-lg-6 order-sm-12" >
-                    <hr>
-                    <h1 class="titles" style="text-align:center;">User Login Form</h1>
-                    <hr>
+                <div class="col-lg-6 order-sm-12">
+                    <h1 class="titles">User Login Form</h1>
                     <div id="add_err2"></div>
-                    <form role="form" method="POST">
+                    <form method="POST">
                         <div class="form-group">
-                            <label for="email" class="lb">Email Address</label>
-                            <input type="email" class="form-control" id="email"> 
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email">
                         </div>
                         <div class="form-group">
-                            <label for="password" class="lb">Password</label>
-                            <input type="password" class="form-control" id="password"> 
+                            <label for="password">Password</label>
+                            <input type="password" id="password">
                         </div>
-                        <button type="submit" class="btn btn-primary" id="login">login</button>
+                        <button type="submit" id="login">Login</button>
                     </form>
-                    <div class="form-group col-lg-12">
-                        <a href="register.php"><button type="submit" class="btn btn-default">Not a User? Register here</button></a>
+                    <div class="form-group">
+                        <a href="register.php">Not a User? Register here</a>
                     </div>
                 </div>
-                <div class="col-lg-6"  style="align-items: center;">
-                        
-                </div>
             </div>
-        </div>    
-
-
+        </div>
     </div>
 </body>
+
 </html>

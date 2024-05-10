@@ -33,43 +33,81 @@ if($mysqli->connect_error){
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <style>
+        .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 80px;
+}
 
+.row.justify-content-center {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+form.row.g-3 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.col-auto {
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+select#bloodgroup {
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+}
+
+.btn.btn-primary.mb-3 {
+    color: #fff;
+    background-color: #007bff;
+    border-color: #007bff;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    border-radius: 0.25rem;
+    cursor: pointer;
+}
+
+.table {
+    width: 100%;
+    margin-bottom: 1rem;
+    color: #212529;
+    border-collapse: collapse;
+}
+
+.table th,
+.table td {
+    padding: 0.75rem;
+    vertical-align: top;
+    border-top: 1px solid #dee2e6;
+}
+
+.table thead th {
+    vertical-align: bottom;
+    border-bottom: 2px solid #dee2e6;
+}
+
+    </style>
 </head>
 <body>
-<nav class="navbar mynavbar navbar-expand-lg navbar-dark">
-    <a class="navbar-brand" href="#">BloodBank Management System</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mynavbar" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="mynavbar">
-        <ul class="navbar-nav mr-auto"  >
-    </ul>
-        <form class="form-inline my-2 my-lg-0"><ul class="navbar-nav mr-auto"  >
-            <li class="nav-item ">
-            <a class="nav-link" href="userdashboard.php">Home</a>
-            </li>
-            <li class="nav-item">
-            <a class="nav-link" href="aboutus.php">About us</a>
-            </li>
-            <li class="nav-item">
-            <a class="nav-link" href="ourmembers.php">Our Members</a>
-            </li>
-            <li class="nav-item">
-            <a class="nav-link" href="joinus.php">Join Us</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="userstock.php">Make Request</a>
-                </li>
-            <li class="nav-item">
-            <a class="nav-link" href="logout.php">Logout</a>
-            </li>
-        </ul>
-        </form>
-    </div>
-</nav>
-
-
+<?php include 'UserNavbar.php' ?>
     <div class="container">
     <div class="row justify-content-center">
         <h1>Search Donor Near you </h1>

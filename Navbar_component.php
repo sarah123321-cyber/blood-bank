@@ -6,58 +6,49 @@
         overflow-x: hidden;
     }
     .navbar {
-        background-color: transparent;
+        background-color:transparent;
         display: flex;
-        padding: 10px;
         justify-content: space-between;
         align-items: center;
+        position: fixed;
+        top: 0;
+        padding: 10px;
+        left: 0;
+        width: 100%;
     }
-
-    .navbar a {
+    .navbar a{
         color: white;
         text-decoration: none;
         font-size: 20px;
     }
-
-    .navbar-collapse form ul {
+    .navbar-collapse form ul{
         display: flex;
         gap: 10px;
     }
-
-    .navbar-collapse form ul li {
+    .navbar-collapse form ul li{
         list-style: none;
     }
-
     .navbar-collapse form ul li a {
         text-decoration: none;
         color: white;
     }
 </style>
-<nav class="navbar mynavbar navbar-expand-lg navbar-dark">
-    <a class="navbar-brand" href="#">BloodBank Management System</a>
+
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top p-md-3">
+    <a class="navbar-brand" href="index.php">BloodBank Management System</a>
 
     <div class="collapse navbar-collapse" id="mynavbar">
-        <ul class="navbar-nav mr-auto"></ul>
         <form class="form-inline my-2 my-lg-0">
             <ul class="navbar-nav mr-auto">
-
                 <li class="nav-item">
-                    <a class="nav-link" href="userdashboard.php">Home</a>
+                    <a class="nav-link mnav" href="index.php">User Login</a>
                 </li>
-
-
                 <li class="nav-item">
-                    <a class="nav-link" href="joinus.php">Join Us</a>
+                    <a class="nav-link mnav" href="register.php">User Registration</a>
                 </li>
-
-                <li class="nav-item">
-                    <a class="nav-link" href="userstock.php">Make Request</a>
+                <li class="nav-item active">
+                    <a class="nav-link mnav" href="adminlogin.php">Admin Login</a>
                 </li>
-
-                <li class="nav-item">
-                    <a class="nav-link" href="logout.php">Logout</a>
-                </li>
-
             </ul>
         </form>
     </div>
