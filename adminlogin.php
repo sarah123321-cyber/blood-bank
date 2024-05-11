@@ -90,7 +90,7 @@
     <script type="text/javascript" async>
         $(document).ready(function() {
             $("#login").click(function() {
-
+                // sending the post reqq to checkafmin for admin login
                 $.ajax({
                     type: "POST",
                     url: "checkadmin.php",
@@ -98,8 +98,8 @@
                         email: $("#email").val(),
                         password: $("#password").val()
                     },
+                    // for success response
                     success: function(html) {
-                        console.log(html)
                         if (html == 'true') {
                             $("#add_err2").html('<div class="alert alert-success"> <strong>Authenticated</strong></div>');
 
@@ -112,9 +112,11 @@
                             $("#add_err2").html('<div class="alert alert-danger"> <strong>Error</strong> processing request. Please try again. </div>');
                         }
                     },
+                    // error handlign 
                     error: function(xhr, status, error) {
                         console.log(error)
                     },
+                    // adding loading text for better view
                     beforeSend: function() {
                         $("#add_err2").html("loading...");
                     }

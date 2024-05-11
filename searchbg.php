@@ -1,7 +1,7 @@
 <?php
 
 session_start();
-
+// session checking and connection to database 
 if (isset($_SESSION['login'])) {
     $fname = $_SESSION['fname'];
     $lname = $_SESSION['lname'];
@@ -12,9 +12,9 @@ if (isset($_SESSION['login'])) {
     $username = "root";
     $password = "";
     $db = "bloodbankk";
-
+    // databse connection 
     $mysqli = new mysqli($servername, $username, $password, $db);
-
+    // error handling
     if ($mysqli->connect_error) {
         die("Connection Failed " . $mysqli->connect_error);
     }
@@ -110,6 +110,7 @@ if (isset($_SESSION['login'])) {
     </head>
 
     <body>
+        <!-- global user navbar included  -->
         <?php include 'UserNavbar.php' ?>
 
 
@@ -140,11 +141,13 @@ if (isset($_SESSION['login'])) {
             </form>
 
             <?php
+            // targetting the id or name  search from the input 
             if (isset($_POST['search'])) {
                 $bloodgroup = $_POST['bloodgroup'];
+                // send find query to data to look for bloodgroup from donors
                 $query = "SELECT * FROM donors WHERE bloodgroup='$bloodgroup'";
                 $result = $mysqli->query($query);
-
+                // showing the result after quering to databse 
                 echo "<div class='table-responsive'>";
                 echo "<table class='table table-hover' border='1'>
                     <thead>
@@ -182,7 +185,7 @@ if (isset($_SESSION['login'])) {
             ?>
 
         </div>
-
+            <!-- include the global footer part -->
         <?php require_once "footer.php" ?>
     </body>
 
@@ -191,6 +194,7 @@ if (isset($_SESSION['login'])) {
 <?php
 
 } else {
+    // homepage redirection 
     header("location:index.php");
 }
 

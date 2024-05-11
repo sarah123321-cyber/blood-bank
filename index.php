@@ -14,9 +14,9 @@
 
     <script type="text/javascript">
         $(document).ready(function() {
-
+            // user login section
             $("#login").click(function() {
-
+                // post r to checkuser for validationg user
                 $.ajax({
                     type: "POST",
                     url: "checkuser.php",
@@ -28,7 +28,7 @@
                         if (html == 'true') {
 
                             $("#add_err2").html('<div class="alert alert-success"> <strong>Authenticated</strong></div>');
-
+                            // redirecting to user dashboard on success response
                             window.location.href = "userdashboard.php";
 
                         } else if (html == 'false') {

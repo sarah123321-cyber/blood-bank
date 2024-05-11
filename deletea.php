@@ -1,12 +1,14 @@
 <?php
 
 session_start();
+// checking if the user session is availabe or not 
 
 if(isset($_SESSION['login'])){
     $fname = $_SESSION['fname'];
     $lname = $_SESSION['lname'];
 }
 else{
+    // redirection to adminlogin if the user session is not found 
     header("location:adminlogin.php");
 }
 
@@ -17,13 +19,14 @@ $servername = "localhost";
 $username = "root";
 $password = "";
 $db = "bloodbankk";
-
+// creating the connection
 $mysqli = new mysqli($servername,$username,$password,$db);
+// error handling if connection is not success or timeouts
 
 if($mysqli->connect_error){
     die("Connection Failed " . $mysqli->connect_error);
 }
-
+//  fetching the selected data from donors such as donor 's id, name 
 $sql = "SELECT donor_id, donor_name, mobile_no, bloodgroup,age,gender, address, city FROM donors";
 $result = $mysqli->query($sql);
 
@@ -45,6 +48,7 @@ $result = $mysqli->query($sql);
     <div class="row table-responsive">
         <table border='1' class="table table-hover"  cellspacing="2" cellpadding="2" >
                 <?php
+                // showing the data if the data is not empty or  if not less than 0
                     if($result->num_rows>0){
 
                         echo "<thead>
@@ -70,6 +74,7 @@ $result = $mysqli->query($sql);
                     <td><?php echo $row["gender"]; ?></td>
                     <td><?php echo $row["address"]; ?></td>
                     <td><?php echo $row["city"]; ?></td>
+                    <!-- send to deleteusera route to delete the user  -->
                     <td><a class="btn btn-danger rounded-pill" href="delusera.php?donor_id=<?php echo $row["donor_id"] ?>">Delete</a></td>
                 </tr>
                 
@@ -84,6 +89,7 @@ $result = $mysqli->query($sql);
 
 <?php
     } else{
+        // showing 0 result if not found 
         echo "0 Results";
     }
 

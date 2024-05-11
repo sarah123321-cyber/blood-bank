@@ -11,6 +11,7 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 } 
 
+// getting the domor_id from url name donor_id 
 $donor_id = $_GET["donor_id"];
 
 // sql to delete a record

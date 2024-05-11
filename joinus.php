@@ -27,8 +27,9 @@ if (isset($_SESSION['login'])) {
         <!--Script-->
         <script type="text/javascript">
             $(document).ready(function() {
+                // function to add the member 
                 $("#join").click(function() {
-
+                    // getting donor details from input 
                     if ($("#donor_name").val() == "") {
                         $("#add_err2").html('<div class="alert alert-danger"> <strong>Name</strong> is required. </div>');
                         return false;
@@ -71,7 +72,7 @@ if (isset($_SESSION['login'])) {
                     gender = $("#gender").val();
                     address = $("#address").val();
                     city = $("#city").val();
-
+                    // pos req to adddonor to add the donor
                     $.ajax({
                         type: "POST",
                         url: "adddonor.php",
@@ -87,7 +88,8 @@ if (isset($_SESSION['login'])) {
                         success: function(html) {
                             if (html == 'true') {
                                 $("#add_err2").html('<div class="alert alert-success"> <strong>Account</strong> processed. </div>');
-                                // window.location.href = "userdashboard.php";
+                                // redirecting to usedashboard on success response
+                                window.location.href = "userdashboard.php";
                             }
 
                         },
@@ -279,6 +281,7 @@ if (isset($_SESSION['login'])) {
 
 <?php
 } else {
+    // homepage redirection incase not found 
     header("location:index.php");
 }
 ?>

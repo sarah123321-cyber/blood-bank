@@ -1,12 +1,13 @@
 <?php
 
 session_start();
-
+// checking if the session has login or cookies
 if(isset($_SESSION['login'])){
     $fname = $_SESSION['fname'];
     $lname = $_SESSION['lname'];
 }
 else{
+    // redirecting to adminlog if the user session is not found 
     header("location:adminlogin.php");
 }
 
@@ -17,13 +18,13 @@ $servername = "localhost";
 $username = "root";
 $password = "";
 $db = "bloodbankk";
-
+// databse conntection
 $mysqli = new mysqli($servername,$username,$password,$db);
-
+// eror handlign 
 if($mysqli->connect_error){
     die("Connection Failed " . $mysqli->connect_error);
 }
-
+// finding or quering the basebase to fetch each and every stock available
 $sql = "SELECT * FROM stock";
 $result = $mysqli->query($sql);
 
@@ -127,6 +128,7 @@ tr:nth-child(even) {
         <div class="table-responsive">
             <table  border='1' class="table table-hover"  cellspacing="2" cellpadding="2" >
                 <?php
+                // if the stock found showing the data for stock in table format
                     if($result->num_rows>0){
 
                         echo " <thead>
@@ -142,6 +144,7 @@ tr:nth-child(even) {
                         <td><?php echo $row["stock_id"]; ?></td>
                         <td><?php echo $row["bloodgroup"]; ?></td>
                         <td><?php echo $row["stock"]; ?></td>
+                        <!-- update the stock if user / admin click on update  -->
                         <td><a class="btn btn-primary rounded-pill" href="updatestock.php?stock_id=<?php echo $row["stock_id"] ?>">Update</a></td>
                     </tr>
 
@@ -158,6 +161,7 @@ tr:nth-child(even) {
 </body>
 <?php
     } else{
+        // /if the stock is empty or result is 0
         echo "0 Results";
     }
 

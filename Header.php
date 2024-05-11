@@ -13,9 +13,9 @@
     <link rel="stylesheet" href="./css/index.css">
     <script type="text/javascript">
         $(document).ready(function () {
-
+            // login 
             $("#login").click(function () {
-            
+            // sending the post request to checkuser to login a user if exist
                 $.ajax({
                     type: "POST",
                     url: "checkuser.php",
@@ -23,6 +23,7 @@
                         email:$("#email").val(),
                         password: $("#password").val() 
                     },
+                    // if login is success
                     success: function (html) {
                         if (html == 'true') {
 
@@ -37,9 +38,11 @@
                             $("#add_err2").html('<div class="alert alert-danger"> <strong>Error</strong> processing request. Please try again. </div>');
                         }
                     },
+                    // error handlign 
                     error: function(xhr,status,error){
                         console.log(error)
                     },
+                    // loaing text after the login is clicked for better user experience (UX)
                     beforeSend: function () {
                         $("#add_err2").html("loading...");
                     }
